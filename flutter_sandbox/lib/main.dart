@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sandbox/manager/radio_button_bloc.dart';
+import 'package:flutter_sandbox/manager/radio_button_event.dart';
+import 'package:flutter_sandbox/manager/radio_button_state.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,54 +19,107 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyHomePage extends StatelessWidget {
+  MyHomePage({super.key});
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final bloc = RadioButtonBloc();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: 16,
+          top: 64,
+          bottom: 24,
+        ),
+        child: BlocBuilder<RadioButtonBloc, RadioButtonState>(
+            bloc: bloc,
+            builder: (context, state) {
+              return ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) => CustomRadioButton(
+                  bloc: bloc,
+                  index: index,
+                ),
+              );
+            }),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    );
+  }
+}
+
+class CustomRadioButton extends StatelessWidget {
+  const CustomRadioButton({
+    super.key,
+    required this.bloc,
+    required this.index,
+  });
+
+  final RadioButtonBloc bloc;
+  final int index;
+
+  void onRadioButtonTap() {
+    bloc.add(RadioButtonUpdateEvent(selectedIndex: index));
+  }
+
+  bool get isSelected => bloc.state.selectedIndex == index;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onRadioButtonTap,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 22,
+          bottom: 6,
+          left: 24,
+          right: 24,
+        ),
+        child: Row(
+          children: [
+            DecoratedBox(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: const Color.fromRGBO(255, 66, 66, 1),
+                ),
+                color: isSelected ? const Color.fromRGBO(255, 66, 66, 1) : null,
+              ),
+              child: SizedBox(
+                height: 52,
+                width: 52,
+                child: isSelected
+                    ? null
+                    : const Center(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(255, 66, 66, 0.3),
+                            shape: BoxShape.circle,
+                          ),
+                          child: SizedBox(
+                            height: 2,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const SizedBox(width: 16),
+            const Text(
+              'Radio button',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 24,
+              ),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
