@@ -1,29 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sandbox/manager/radio_button_bloc.dart';
-import 'package:flutter_sandbox/manager/radio_button_event.dart';
 import 'package:gap/gap.dart';
 
 class CustomRadioButton extends StatelessWidget {
   const CustomRadioButton({
     super.key,
-    required this.bloc,
-    required this.index,
+    required this.onPressed,
+    required this.isSelected,
   });
 
-  final RadioButtonBloc bloc;
-  final int index;
-
-  void onRadioButtonTap() {
-    bloc.add(RadioButtonUpdateEvent(selectedIndex: index));
-  }
-
-  bool get isSelected => bloc.state.selectedIndex == index;
+  final Function() onPressed;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onRadioButtonTap,
+      onTap: onPressed,
       child: Padding(
         padding: const EdgeInsets.only(
           top: 22,

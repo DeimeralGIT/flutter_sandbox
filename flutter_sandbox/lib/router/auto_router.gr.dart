@@ -15,19 +15,53 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CounterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CounterPage(),
+      );
+    },
+    DashboardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DashboardPage(),
+      );
+    },
     RadioButtonRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: RadioButtonPage(),
       );
     },
-    SplashRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SplashPage(),
-      );
-    },
   };
+}
+
+/// generated route for
+/// [CounterPage]
+class CounterRoute extends PageRouteInfo<void> {
+  const CounterRoute({List<PageRouteInfo>? children})
+      : super(
+          CounterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CounterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [DashboardPage]
+class DashboardRoute extends PageRouteInfo<void> {
+  const DashboardRoute({List<PageRouteInfo>? children})
+      : super(
+          DashboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DashboardRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -40,20 +74,6 @@ class RadioButtonRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RadioButtonRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [SplashPage]
-class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute({List<PageRouteInfo>? children})
-      : super(
-          SplashRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
