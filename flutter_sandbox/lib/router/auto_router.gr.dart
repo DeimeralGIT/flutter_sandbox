@@ -16,38 +16,54 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     CounterRoute.name: (routeData) {
+      final args = routeData.argsAs<CounterRouteArgs>(orElse: () => const CounterRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: CounterPage(),
+        child: MyTripsPage(key: args.key),
       );
     },
     DashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DashboardPage(),
+        child: DashboardPage(),
       );
     },
     RadioButtonRoute.name: (routeData) {
+      final args = routeData.argsAs<RadioButtonRouteArgs>(orElse: () => const RadioButtonRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: RadioButtonPage(),
+        child: BookPage(key: args.key),
       );
     },
   };
 }
 
 /// generated route for
-/// [CounterPage]
-class CounterRoute extends PageRouteInfo<void> {
-  const CounterRoute({List<PageRouteInfo>? children})
-      : super(
+/// [MyTripsPage]
+class CounterRoute extends PageRouteInfo<CounterRouteArgs> {
+  CounterRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           CounterRoute.name,
+          args: CounterRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'CounterRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CounterRouteArgs> page = PageInfo<CounterRouteArgs>(name);
+}
+
+class CounterRouteArgs {
+  const CounterRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CounterRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -65,15 +81,29 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [RadioButtonPage]
-class RadioButtonRoute extends PageRouteInfo<void> {
-  const RadioButtonRoute({List<PageRouteInfo>? children})
-      : super(
+/// [BookPage]
+class RadioButtonRoute extends PageRouteInfo<RadioButtonRouteArgs> {
+  RadioButtonRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           RadioButtonRoute.name,
+          args: RadioButtonRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'RadioButtonRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<RadioButtonRouteArgs> page = PageInfo<RadioButtonRouteArgs>(name);
+}
+
+class RadioButtonRouteArgs {
+  const RadioButtonRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'RadioButtonRouteArgs{key: $key}';
+  }
 }

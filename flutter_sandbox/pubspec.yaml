@@ -39,6 +39,7 @@ dependencies:
   gap: ^3.0.1
   talker_bloc_logger: ^2.3.2
   talker: ^3.1.6
+  get_it: ^7.6.4
 
 
   # The following adds the Cupertino Icons font to your application.
