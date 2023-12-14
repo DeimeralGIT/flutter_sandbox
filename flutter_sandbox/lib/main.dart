@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sandbox/di/di.dart';
 import 'package:flutter_sandbox/router/auto_router.dart';
+import 'package:flutter_sandbox/utils/custom_theme.dart';
 import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
 
 void main() {
@@ -17,10 +18,14 @@ class MyApp extends StatelessWidget {
     Bloc.observer = TalkerBlocObserver();
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: MediaQuery.of(context).platformBrightness == Brightness.light
+          ? lightTheme
+          : darkTheme,
+
+      // ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+      //   useMaterial3: true,
+      // ),
       home: MyHomePage(),
     );
   }

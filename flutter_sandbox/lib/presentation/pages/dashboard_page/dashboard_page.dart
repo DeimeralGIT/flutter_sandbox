@@ -1,12 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart' hide BottomNavigationBar;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sandbox/di/di.dart';
 import 'package:flutter_sandbox/manager/dashboard_manager/dashboard_manager_bloc.dart';
 import 'package:flutter_sandbox/manager/dashboard_manager/dashboard_manager_state.dart';
-import 'package:flutter_sandbox/presentation/pages/book_page/radio_button_page.dart';
-import 'package:flutter_sandbox/presentation/pages/dashboard_page/widgets/bottom_navigation_bar.dart';
-import 'package:flutter_sandbox/presentation/pages/my_trips_page/counter_page.dart';
+import 'package:flutter_sandbox/presentation/pages/dashboard_page/widgets/custom_navigation_bar.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
@@ -18,8 +16,7 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageController = PageController();
 
-    return PopScope(
-        child: Scaffold(
+    return Scaffold(
       body: BlocListener<DashboardManagerBloc, DashboardManagerState>(
         bloc: dashboardBloc,
         listener: (_, state) {
@@ -33,13 +30,14 @@ class DashboardPage extends StatelessWidget {
           controller: pageController,
           physics: const ClampingScrollPhysics(),
           pageSnapping: true,
-          children: [
-            MyTripsPage(),
-            BookPage(),
-          ],
+          children: dashboardBloc.pages
+              .map(
+                (pageModel) => pageModel.page,
+              )
+              .toList(),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(),
-    ));
+      bottomNavigationBar: const CustomNavigationBar(),
+    );
   }
 }

@@ -7,6 +7,6 @@ class BookPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(color: Colors.blue);
+    return ColoredBox(color: Colors.red);
   }
 }

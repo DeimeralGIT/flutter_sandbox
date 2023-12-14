@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sandbox/presentation/pages/my_trips_page/counter_page.dart';
-import 'package:flutter_sandbox/presentation/pages/book_page/radio_button_page.dart';
+import 'package:flutter_sandbox/presentation/pages/check_in_page/check_in_page.dart';
+import 'package:flutter_sandbox/presentation/pages/my_trips_page/my_trips_page.dart';
+import 'package:flutter_sandbox/presentation/pages/book_page/book_page.dart';
 import 'package:flutter_sandbox/presentation/pages/dashboard_page/dashboard_page.dart';
 
 part 'auto_router.gr.dart';
@@ -16,12 +17,20 @@ class AppRouter extends _$AppRouter {
           initial: true,
           children: [
             AutoRoute(
-              path: 'splash',
-              page: CounterRoute.page,
+              path: 'book',
+              page: BookRoute.page,
             ),
             AutoRoute(
-              path: 'radio_button',
-              page: RadioButtonRoute.page,
+              path: 'my_trips',
+              page: MyTripsRoute.page,
+            ),
+            AutoRoute(
+              path: 'check_in',
+              page: CheckInRoute.page,
+            ),
+            AutoRoute(
+              path: 'more',
+              page: MoreRoute.page,
             ),
           ],
         )

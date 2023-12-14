@@ -15,95 +15,180 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    CounterRoute.name: (routeData) {
-      final args = routeData.argsAs<CounterRouteArgs>(orElse: () => const CounterRouteArgs());
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: MyTripsPage(key: args.key),
-      );
-    },
-    DashboardRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: DashboardPage(),
-      );
-    },
-    RadioButtonRoute.name: (routeData) {
-      final args = routeData.argsAs<RadioButtonRouteArgs>(orElse: () => const RadioButtonRouteArgs());
+    BookRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<BookRouteArgs>(orElse: () => const BookRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: BookPage(key: args.key),
+      );
+    },
+    CheckInRoute.name: (routeData) {
+      final args = routeData.argsAs<CheckInRouteArgs>(
+          orElse: () => const CheckInRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CheckInPage(key: args.key),
+      );
+    },
+    DashboardRoute.name: (routeData) {
+      final args = routeData.argsAs<DashboardRouteArgs>(
+          orElse: () => const DashboardRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DashboardPage(key: args.key),
+      );
+    },
+    MyTripsRoute.name: (routeData) {
+      final args = routeData.argsAs<MyTripsRouteArgs>(
+          orElse: () => const MyTripsRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MyTripsPage(key: args.key),
       );
     },
   };
 }
 
 /// generated route for
-/// [MyTripsPage]
-class CounterRoute extends PageRouteInfo<CounterRouteArgs> {
-  CounterRoute({
+/// [BookPage]
+class BookRoute extends PageRouteInfo<BookRouteArgs> {
+  BookRoute({
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-          CounterRoute.name,
-          args: CounterRouteArgs(key: key),
+          BookRoute.name,
+          args: BookRouteArgs(key: key),
           initialChildren: children,
         );
 
-  static const String name = 'CounterRoute';
+  static const String name = 'BookRoute';
 
-  static const PageInfo<CounterRouteArgs> page = PageInfo<CounterRouteArgs>(name);
+  static const PageInfo<BookRouteArgs> page = PageInfo<BookRouteArgs>(name);
 }
 
-class CounterRouteArgs {
-  const CounterRouteArgs({this.key});
+class BookRouteArgs {
+  const BookRouteArgs({this.key});
 
   final Key? key;
 
   @override
   String toString() {
-    return 'CounterRouteArgs{key: $key}';
+    return 'BookRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [CheckInPage]
+class CheckInRoute extends PageRouteInfo<CheckInRouteArgs> {
+  CheckInRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CheckInRoute.name,
+          args: CheckInRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'CheckInRoute';
+
+  static const PageInfo<CheckInRouteArgs> page =
+      PageInfo<CheckInRouteArgs>(name);
+}
+
+class CheckInRouteArgs {
+  const CheckInRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'CheckInRouteArgs{key: $key}';
   }
 }
 
 /// generated route for
 /// [DashboardPage]
-class DashboardRoute extends PageRouteInfo<void> {
-  const DashboardRoute({List<PageRouteInfo>? children})
-      : super(
+class DashboardRoute extends PageRouteInfo<DashboardRouteArgs> {
+  DashboardRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           DashboardRoute.name,
+          args: DashboardRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'DashboardRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<DashboardRouteArgs> page =
+      PageInfo<DashboardRouteArgs>(name);
 }
 
-/// generated route for
-/// [BookPage]
-class RadioButtonRoute extends PageRouteInfo<RadioButtonRouteArgs> {
-  RadioButtonRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          RadioButtonRoute.name,
-          args: RadioButtonRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'RadioButtonRoute';
-
-  static const PageInfo<RadioButtonRouteArgs> page = PageInfo<RadioButtonRouteArgs>(name);
-}
-
-class RadioButtonRouteArgs {
-  const RadioButtonRouteArgs({this.key});
+class DashboardRouteArgs {
+  const DashboardRouteArgs({this.key});
 
   final Key? key;
 
   @override
   String toString() {
-    return 'RadioButtonRouteArgs{key: $key}';
+    return 'DashboardRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [MyTripsPage]
+class MyTripsRoute extends PageRouteInfo<MyTripsRouteArgs> {
+  MyTripsRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MyTripsRoute.name,
+          args: MyTripsRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'MyTripsRoute';
+
+  static const PageInfo<MyTripsRouteArgs> page =
+      PageInfo<MyTripsRouteArgs>(name);
+}
+
+class MyTripsRouteArgs {
+  const MyTripsRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MyTripsRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [MorePage]
+class MoreRoute extends PageRouteInfo<MoreRouteArgs> {
+  MoreRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MoreRoute.name,
+          args: MoreRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'MoreRoute';
+
+  static const PageInfo<MoreRouteArgs> page = PageInfo<MoreRouteArgs>(name);
+}
+
+class MoreRouteArgs {
+  const MoreRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MoreRouteArgs{key: $key}';
   }
 }
