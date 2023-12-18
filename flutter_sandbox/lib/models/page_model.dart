@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PageModel {
-  int index;
-  String label;
-  String iconData;
-  Widget page;
+  final int index;
+  final String label;
+  final String iconData;
+  final Widget page;
   PageModel({
     required this.index,
     required this.label,

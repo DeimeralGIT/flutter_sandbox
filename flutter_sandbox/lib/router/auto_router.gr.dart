@@ -39,6 +39,14 @@ abstract class _$AppRouter extends RootStackRouter {
         child: DashboardPage(key: args.key),
       );
     },
+    MoreRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<MoreRouteArgs>(orElse: () => const MoreRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MorePage(key: args.key),
+      );
+    },
     MyTripsRoute.name: (routeData) {
       final args = routeData.argsAs<MyTripsRouteArgs>(
           orElse: () => const MyTripsRouteArgs());
@@ -137,6 +145,34 @@ class DashboardRouteArgs {
 }
 
 /// generated route for
+/// [MorePage]
+class MoreRoute extends PageRouteInfo<MoreRouteArgs> {
+  MoreRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MoreRoute.name,
+          args: MoreRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'MoreRoute';
+
+  static const PageInfo<MoreRouteArgs> page = PageInfo<MoreRouteArgs>(name);
+}
+
+class MoreRouteArgs {
+  const MoreRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'MoreRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
 /// [MyTripsPage]
 class MyTripsRoute extends PageRouteInfo<MyTripsRouteArgs> {
   MyTripsRoute({
@@ -162,33 +198,5 @@ class MyTripsRouteArgs {
   @override
   String toString() {
     return 'MyTripsRouteArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [MorePage]
-class MoreRoute extends PageRouteInfo<MoreRouteArgs> {
-  MoreRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          MoreRoute.name,
-          args: MoreRouteArgs(key: key),
-          initialChildren: children,
-        );
-
-  static const String name = 'MoreRoute';
-
-  static const PageInfo<MoreRouteArgs> page = PageInfo<MoreRouteArgs>(name);
-}
-
-class MoreRouteArgs {
-  const MoreRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'MoreRouteArgs{key: $key}';
   }
 }

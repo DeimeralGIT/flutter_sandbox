@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sandbox/presentation/pages/check_in_page/check_in_page.dart';
+import 'package:flutter_sandbox/presentation/pages/more_page/more_page.dart';
 import 'package:flutter_sandbox/presentation/pages/my_trips_page/my_trips_page.dart';
 import 'package:flutter_sandbox/presentation/pages/book_page/book_page.dart';
 import 'package:flutter_sandbox/presentation/pages/dashboard_page/dashboard_page.dart';

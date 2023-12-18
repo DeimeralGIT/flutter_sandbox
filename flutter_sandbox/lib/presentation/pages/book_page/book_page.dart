@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class BookPage extends StatelessWidget {
-  BookPage({super.key});
+  const BookPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(color: Colors.red);
+    return const ColoredBox(color: Colors.red);
   }
 }

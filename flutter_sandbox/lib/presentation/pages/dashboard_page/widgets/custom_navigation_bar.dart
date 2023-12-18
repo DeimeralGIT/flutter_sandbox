@@ -51,7 +51,7 @@ class CustomNavigationBar extends StatelessWidget {
                       height: 23,
                       width: 23,
                       colorFilter: ColorFilter.mode(
-                        getItemColor(dashboardBloc.pages.indexOf(pageModel)),
+                        getItemColor(pageModel.index),
                         BlendMode.srcIn,
                       ),
                     ),
