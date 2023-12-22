@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_sandbox/manager/dashboard_manager/dashboard_manager_event.dart';
 import 'package:flutter_sandbox/manager/dashboard_manager/dashboard_manager_state.dart';
-import 'package:flutter_sandbox/models/page_model.dart';
 import 'package:flutter_sandbox/presentation/pages/book_page/book_page.dart';
+import '../../models/page_model.dart';
 import 'package:flutter_sandbox/presentation/pages/check_in_page/check_in_page.dart';
 import 'package:flutter_sandbox/presentation/pages/more_page/more_page.dart';
 import 'package:flutter_sandbox/presentation/pages/my_trips_page/my_trips_page.dart';
