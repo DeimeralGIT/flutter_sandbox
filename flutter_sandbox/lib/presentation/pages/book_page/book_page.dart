@@ -10,7 +10,7 @@ import 'package:gap/gap.dart';
 
 @RoutePage()
 class BookPage extends StatelessWidget {
-  BookPage({super.key}) {}
+  BookPage({super.key});
 
   final textInputCubit = TextInputCubit();
 
@@ -27,7 +27,7 @@ class BookPage extends StatelessWidget {
       if (textController.text.length == 2) {
         textController.text = textController.text + '/';
         textController.selection =
-            TextSelection(baseOffset: 1, extentOffset: 3);
+            TextSelection(baseOffset: 0, extentOffset: 3);
       }
     });
 
@@ -45,35 +45,36 @@ class BookPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey,
       body: BlocBuilder<TextInputCubit, TextInputState>(
-          bloc: textInputCubit,
-          builder: (context, state) {
-            return ListView(
-              padding: const EdgeInsets.all(80),
-              children: [
-                const Gap(40),
-                TextField(
-                  controller: textController,
-                  decoration: InputDecoration(
-                    suffixIcon: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () => textInputCubit.onObscure(!state.isObscured),
-                      child: Icon(
-                        state.isObscured
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                      ),
+        bloc: textInputCubit,
+        builder: (context, state) {
+          return ListView(
+            padding: const EdgeInsets.all(80),
+            children: [
+              const Gap(40),
+              TextField(
+                controller: textController,
+                decoration: InputDecoration(
+                  suffixIcon: GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () => textInputCubit.onObscure(!state.isObscured),
+                    child: Icon(
+                      state.isObscured
+                          ? Icons.visibility_off
+                          : Icons.visibility,
                     ),
                   ),
-                  obscureText: state.isObscured,
                 ),
-                const Gap(16),
-                ElevatedButton(
-                  onPressed: onShowText,
-                  child: Text('show_text'.tr()),
-                ),
-              ],
-            );
-          }),
+                obscureText: state.isObscured,
+              ),
+              const Gap(16),
+              ElevatedButton(
+                onPressed: onShowText,
+                child: Text('show_text'.tr()),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
